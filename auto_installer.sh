@@ -285,13 +285,10 @@ while true; do
         echo -e "\e[92mDatabase Password: $db_password\e[0m"
         
         # Create the credentials.txt file
-        echo -e "# Print DB Details" > /root/credentials.txt
-        echo -e "Database Name: shopware" >> /root/credentials.txt
-        echo -e "Database User: shopware" >> /root/credentials.txt
-        echo -e "Database Password: $db_password" >> /root/credentials.txt
-
-# Inform the user that the file has been created
-echo "Credentials have been saved in credentials.txt"
+        echo -e "# Print DB Details\nDatabase Name: shopware\nDatabase User: shopware\nDatabase Password: $db_password" > credentials.txt
+        
+       # Inform the user that the file has been created
+        echo "Credentials have been saved in credentials.txt"
 
         echo -e "\e[92mChanges have been made. You can access the 2nd Shopware installer at https://$domain_name/installer/database-configuration\e[0m"
         while true; do
