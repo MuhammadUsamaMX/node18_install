@@ -397,12 +397,3 @@ select option in "${options[@]}"; do
         ;;
     esac
 done
-
-
-sleep 10
-clear 
-echo "DB credentials are :"
-#print DB Details
-echo -e "\e[92mDatabase Name: shopware\e[0m"
-echo -e "\e[92mDatabase User: shopware\e[0m"
-echo -e "\e[92mDatabase Password: $db_password\e[0m"
