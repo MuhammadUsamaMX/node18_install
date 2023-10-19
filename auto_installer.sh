@@ -18,7 +18,7 @@ log "Log file created and permissions set."
 is_supported_ubuntu_version() {
     if [ -n "$(lsb_release -a 2>/dev/null | grep 'Ubuntu')" ]; then
         ubuntu_version=$(lsb_release -r | awk '{print $2}')
-        if [ "$(echo "$ubuntu_version >= 22.4" | bc)" -eq 1 ]; then
+        if [ "$(echo "$ubuntu_version >= 22.04" | bc)" -eq 1 ]; then
             return 0
         fi
     fi
