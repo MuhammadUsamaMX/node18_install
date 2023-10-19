@@ -118,7 +118,7 @@ install_rainloop() {
     iptables -F && iptables -A INPUT -p tcp --dport 22,80,443/tcp -j ACCEPT
 
     #Getting SSL
-    sudo certbot --apache -d $domain_name
+    sudo certbot --apache -d $domain_name -m admin@$domain_name --agree-tos
 
     echo -e "\e[92mRainLoop installation complete.\e[0m"
     sleep 5
@@ -211,7 +211,7 @@ install_shopware() {
     iptables -F && iptables -A INPUT -p tcp --dport 22,80,443/tcp -j ACCEPT
 
     #Getting SSL
-    sudo certbot --apache -d $domain_name
+    sudo certbot --apache -d $domain_name -m admin@$domain_name --agree-tos
 
     echo -e "\e[92mGenerating a random password for the database...\e[0m"
     db_password=$(openssl rand -base64 12)
@@ -281,11 +281,11 @@ done
 
 # Function to set up Cloudflare access
 cloudflare_setup() {
-
+clear
 echo -e "\e[92mSetting up Cloudflare access for $domain_name...\e[0m"
 
 while true; do
-    read -p "Type 'yes' to make sure your $domain_name and IP are proxied in Cloudflare to prevent IP leaks: " user_input
+    read -p "Type 'y' to make sure your $domain_name and IP are proxied in Cloudflare to prevent IP leaks: " user_input
     if [ "$user_input" == "y" ]; then
         break
     fi
