@@ -285,10 +285,10 @@ while true; do
         echo -e "\e[92mDatabase Password: $db_password\e[0m"
         
         # Create the credentials.txt file
-        echo -e "# Print DB Details" > credentials.txt
-        echo -e "Database Name: shopware" >> credentials.txt
-        echo -e "Database User: shopware" >> credentials.txt
-        echo -e "Database Password: $db_password" >> credentials.txt
+        echo -e "# Print DB Details" > /root/credentials.txt
+        echo -e "Database Name: shopware" >> /root/credentials.txt
+        echo -e "Database User: shopware" >> /root/credentials.txt
+        echo -e "Database Password: $db_password" >> /root/credentials.txt
 
 # Inform the user that the file has been created
 echo "Credentials have been saved in credentials.txt"
