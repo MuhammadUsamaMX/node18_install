@@ -125,9 +125,9 @@ ${bold}${NODENAME} is no longer actively supported!${normal}
     ${bold}https://github.com/nodesource/distributions${normal}
 "
         echo
-        echo "Continuing in 20 seconds ..."
+        echo "Continuing in 5 seconds ..."
         echo
-        sleep 20
+        sleep 5
     fi
 }
 
