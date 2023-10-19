@@ -156,9 +156,9 @@ This script, located at ${bold}https://deb.nodesource.com/setup${normal}, used t
 "
 
         echo
-        echo "Continuing in 20 seconds (press Ctrl-C to abort) ..."
+        echo "Continuing in 5 seconds (press Ctrl-C to abort) ..."
         echo
-        sleep 20
+        sleep 5
     fi
 }
 
