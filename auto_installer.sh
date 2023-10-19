@@ -14,6 +14,27 @@ sudo touch "$log_file"
 sudo chmod 644 "$log_file"
 log "Log file created and permissions set."
 
+# Function to check if the OS is Ubuntu and version is 22.4 or above
+is_supported_ubuntu_version() {
+    if [ -n "$(lsb_release -a 2>/dev/null | grep 'Ubuntu')" ]; then
+        ubuntu_version=$(lsb_release -r | awk '{print $2}')
+        if [ "$(echo "$ubuntu_version >= 22.4" | bc)" -eq 1 ]; then
+            return 0
+        fi
+    fi
+    return 1
+}
+
+# Function to check if the script is run with root privileges
+is_root() {
+    if [ "$EUID" -eq 0 ]; then
+        return 0
+    fi
+    return 1
+}
+
+
+
 # Function to install dependencies
 install_dependencies() {
     log "Installing dependencies..."
@@ -319,6 +340,18 @@ echo -e "\e[92mCloudflare access setup completed for $domain_name.\e[0m"
 
 
 # Main script
+#Root permission check
+
+if ! is_root; then
+    echo "This script requires root privileges. Please run it with sudo."
+    exit 1
+fi
+# Check the OS and it's version 
+if ! is_supported_ubuntu_version; then
+    echo "This script is designed to run on Ubuntu 22.4 or above only."
+    exit 1
+fi
+
 PS3="Select an option: "
 options=("Install Shopware" "Install Shopware with RainLoop Webmail" "Quit")
 select option in "${options[@]}"; do
