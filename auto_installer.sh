@@ -32,8 +32,6 @@ is_root() {
     fi
     return 1
 }
-db_password=$(openssl rand -base64 12)
-
 
 # Function to install dependencies
 install_dependencies() {
@@ -235,7 +233,7 @@ install_shopware() {
     sudo certbot --apache -d $domain_name -m admin@$domain_name --agree-tos
 
     echo -e "\e[92mGenerating a random password for the database...\e[0m"
-
+    db_password=$(openssl rand -base64 12)
     echo -e "\e[92mCreating database and user...\e[0m"
     sudo mysql -uroot -e "CREATE DATABASE shopware;"
     sudo mysql -uroot -e "CREATE USER shopware@'localhost' IDENTIFIED BY '$db_password';"
@@ -286,6 +284,15 @@ while true; do
         echo -e "\e[92mDatabase User: shopware\e[0m"
         echo -e "\e[92mDatabase Password: $db_password\e[0m"
         
+        # Create the credentials.txt file
+        echo -e "# Print DB Details" > credentials.txt
+        echo -e "Database Name: shopware" >> credentials.txt
+        echo -e "Database User: shopware" >> credentials.txt
+        echo -e "Database Password: $db_password" >> credentials.txt
+
+# Inform the user that the file has been created
+echo "Credentials have been saved in credentials.txt"
+
         echo -e "\e[92mChanges have been made. You can access the 2nd Shopware installer at https://$domain_name/installer/database-configuration\e[0m"
         while true; do
                 read -p "After installing Shopware from the 2nd installer, press 'y': " user_input
