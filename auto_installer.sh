@@ -32,7 +32,7 @@ is_root() {
     fi
     return 1
 }
-
+db_password=$(openssl rand -base64 12)
 
 
 # Function to install dependencies
@@ -235,7 +235,6 @@ install_shopware() {
     sudo certbot --apache -d $domain_name -m admin@$domain_name --agree-tos
 
     echo -e "\e[92mGenerating a random password for the database...\e[0m"
-    db_password=$(openssl rand -base64 12)
 
     echo -e "\e[92mCreating database and user...\e[0m"
     sudo mysql -uroot -e "CREATE DATABASE shopware;"
@@ -391,3 +390,12 @@ select option in "${options[@]}"; do
         ;;
     esac
 done
+
+
+sleep 10
+clear 
+echo "DB credentials are :"
+#print DB Details
+echo -e "\e[92mDatabase Name: shopware\e[0m"
+echo -e "\e[92mDatabase User: shopware\e[0m"
+echo -e "\e[92mDatabase Password: $db_password\e[0m"
