@@ -14,7 +14,7 @@ sudo touch "$log_file"
 sudo chmod 644 "$log_file"
 log "Log file created and permissions set."
 
-# Function to check if the OS is Ubuntu and version is 22.4 or above
+# Function to check if the OS is Ubuntu and version is 22.04 or above
 is_supported_ubuntu_version() {
     if [ -n "$(lsb_release -a 2>/dev/null | grep 'Ubuntu')" ]; then
         ubuntu_version=$(lsb_release -r | awk '{print $2}')
