@@ -334,7 +334,7 @@ select option in "${options[@]}"; do
         log "Cloudflare setup Completed"
         exit
         ;;
-    3)
+    2)
         log "Dependencies logs Start."
         install_dependencies  # Install dependencies
         log "Dependencies installed."
