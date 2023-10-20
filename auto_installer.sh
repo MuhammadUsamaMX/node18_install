@@ -231,7 +231,7 @@ install_shopware() {
 
     #Getting SSL
     sudo certbot --apache -d $domain_name -m admin@$domain_name --agree-tos
-
+    sleep 5
     echo -e "\e[92mGenerating a random password for the database...\e[0m"
     db_password=$(openssl rand -base64 12)
     echo -e "\e[92mCreating database and user...\e[0m"
@@ -241,9 +241,7 @@ install_shopware() {
     sudo mysql -uroot -e "FLUSH PRIVILEGES;"
     echo -e "\e[92mRestarting Apache one more time...\e[0m"
     sudo systemctl restart apache2
-    clear
     echo -e "\e[92mYou can access the Shopware installer at https://$domain_name/shopware-installer.phar.php/install\e[0m"
-    sleep 5
     while true; do
     read -p "\e[92mType 'yes' to confirm successful installation of Shopware 6 on $domain_name with Shopware installer: \e[0m" response
 
