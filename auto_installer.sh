@@ -207,6 +207,7 @@ install_shopware() {
 </VirtualHost>" | sudo tee $vhost_file
 
     echo -e "\e[92mEnabling the new virtual host...\e[0m"
+    sudo a2dissite /etc/apache2/sites-enabled/000-default.conf
     sudo a2ensite $domain_name.conf
 
     echo -e "\e[92mEnabling Rewrite Module and PHP-FPM of Apache2...\e[0m"
