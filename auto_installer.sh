@@ -374,7 +374,7 @@ select option in "${options[@]}"; do
         install_dependencies  # Install dependencies
         log "Dependencies installed."
         log "Starting Shopware installation."
-        #install_shopware      # Install shopware6
+        install_shopware      # Install shopware6
         log "Shopware installation completed."
         log "Starting RainLoop Webmail installation."
         install_rainloop      # Install webmail_rainloop
